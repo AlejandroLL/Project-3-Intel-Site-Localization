@@ -3,7 +3,7 @@
       --intel-blue: #0068b5;
       --intel-light-blue: #00c7fd;
       --text-dark: #1f1f1f;
-      --text-light: #5e5e5e;
+      --text-light: #4a4a4a;
       --bg-light: #f4f7f9;
       --white: #ffffff;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -28,6 +28,16 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+    article h2, article h3 {
+      text-align: start;
+    }
+    .translated-rtl article h2,
+    .translated-rtl article h3,
+    .translated-rtl .content-card h2,
+    .translated-rtl .content-card p,
+    .translated-rtl .modal-content{
+      text-align: right !important;
+    } 
 
     header {
       /* Radial droplet using Intel logo blues from 1990s (deep blue) through 2026 (bright aqua) */
@@ -114,6 +124,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       padding: 20px 25px 5px;
+      text-align: start;
     }
 
     article h3 {
@@ -124,6 +135,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-align: start;
     }
 
     .image-container {
@@ -188,26 +200,211 @@
       width: 40px;
       height: 8px;
       border-radius: 4px;
-      background: #cbd5e1;
+      background: #a8b5c2;
       text-decoration: none;
       transition: var(--transition);
+      display: inline-block;
+      outline: 2px solid transparent;
+      outline-offset: 2px;
     }
 
     .dot:hover {
-      background: var(--intel-light-blue);
+      background: var(--intel-blue);
     }
 
     .dot:active, .dot:focus {
       background: var(--intel-blue);
       width: 60px;
-      outline: none;
+      outline: 2px solid var(--intel-blue);
+      outline-offset: 2px;
     }
 
     footer {
-      text-align: center;
       padding: 40px 20px;
       background: var(--white);
       border-top: 1px solid #e2e8f0;
+    }
+
+    .page-wrap-footer {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .footer-link {
+      color: var(--intel-blue);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .footer-link:hover {
+      color: #005fa3;
+      text-decoration: underline;
+    }
+
+    .footer-link:focus {
+      outline: 2px solid var(--intel-blue);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .copyright {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .footer-links {
+        gap: 15px;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* 3-Column Content Section */
+    .content-section {
+      padding: 60px 20px;
+      background: var(--bg-light);
+    }
+
+    .content-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .content-card h2 {
+      font-size: 1.5rem;
+      color: var(--intel-blue);
+      margin-bottom: 15px;
+      text-align: start;
+    }
+
+    .content-card p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      flex-grow: 1;
+      line-height: 1.6;
+    }
+
+    .learn-more-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--intel-blue);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: var(--transition);
+      font-weight: 600;
+      align-self: flex-start;
+    }
+
+    .learn-more-btn:hover {
+      background: #005fa3;
+      transform: translateX(5px);
+    }
+
+    /* RTL support for content cards */
+    [dir="rtl"] .learn-more-btn:hover {
+      transform: translateX(-5px);
+    }
+
+    [dir="rtl"] .content-card h2 {
+      text-align: end;
+    }
+
+    /* Subscription Form Section */
+    .newsletter-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, var(--intel-blue) 0%, #005fa3 100%);
+      color: var(--white);
+    }
+
+    .newsletter-section h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .newsletter-section p {
+      text-align: center;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #999;
+    }
+
+    .newsletter-form button {
+      padding: 12px 30px;
+      background: var(--intel-light-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--white);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form input,
+      .newsletter-form button {
+        width: 100%;
+      }
     }
 
     @media (max-width: 1024px) {
@@ -222,13 +419,175 @@
       }
     }
 
-/*
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-.body {
-    max-width: 100vw; 
-}
-*/
+    /* RTL (Right-to-Left) Language Support */
+    [dir="rtl"] .page-wrap {
+      padding: 20px 40px 40px;
+    }
+
+    [dir="rtl"] article {
+      scroll-margin-right: 40px;
+      scroll-margin-left: auto;
+    }
+
+    [dir="rtl"] article h2 {
+      text-align: right;
+      padding: 20px 25px 5px;
+      direction: rtl;
+      unicode-bidi: embed; /* Ensures correct bidirectional rendering */
+    }
+
+    [dir="rtl"] article h3 {
+      text-align: right;
+      padding: 0 25px;
+    }
+
+    [dir="rtl"] .nav-dots {
+      flex-direction: row-reverse;
+    }
+
+    [dir="rtl"] .overlay-text {
+      text-align: center;
+    }
+
+    [dir="rtl"] header {
+      text-align: center;
+    }
+
+    [dir="rtl"] footer {
+      text-align: center;
+    }
+
+    [dir="rtl"] .footer-links {
+      flex-direction: row-reverse;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .modal-overlay.active .modal-content {
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--text-dark);
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: var(--bg-light);
+    }
+
+    .modal-close:focus {
+      outline: 2px solid var(--intel-blue);
+      outline-offset: 2px;
+    }
+
+    .modal-content h2 {
+      font-size: 0.9rem;
+      color: var(--intel-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .modal-content h3 {
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      object-fit: cover;
+      max-height: 300px;
+    }
+
+    .modal-content p {
+      color: var(--text-light);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* RTL Modal Support */
+    [dir="rtl"] .modal-close {
+      left: 15px;
+      right: auto;
+    }
+
+    [dir="rtl"] .modal-content h2,
+    [dir="rtl"] .modal-content h3 {
+      text-align: right;
+    }
+
+    [dir="rtl"] .modal-content p {
+      text-align: right;
+    }
+
+    /* Make articles clickable with cursor pointer */
+    .modal-trigger {
+      cursor: pointer;
+    }
+
+    .modal-trigger:hover {
+      cursor: pointer;
+    }
